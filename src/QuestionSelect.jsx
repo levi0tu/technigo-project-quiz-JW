@@ -10,7 +10,7 @@ export const QuestionSelect = ({ legend, name, options, value, handleChange }) =
                 value={value}
                 onChange={handleChange}
             >
-                <option value="">-- Välj power-up --</option>
+                <option value="">-- Välj --</option>
                 {options.map((option) => (
                     <option key={option} value={option}>
                         {option}

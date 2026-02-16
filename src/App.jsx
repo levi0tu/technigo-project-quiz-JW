@@ -25,6 +25,14 @@ const environmentsOptions = [
   "Sky/Cloud - Högt uppe i molnen",
   "Desert - Varma sandöknar",
 ];
+
+const priorityOptions = [
+  "Snabb completion time",
+  "Hitta alla hemliga areas",
+  "Samla maximalt med coins",
+  "Ha kul och experimentera",
+];
+
 export const App = () => {
   const [formData, setFormData] = useState({
     adventure: "",
@@ -50,7 +58,7 @@ export const App = () => {
   };
 
   return (
-    <div>
+    <section>
       <h1>Which Mario Character Are You</h1>
 
       {!isSubmitted && (
@@ -63,7 +71,7 @@ export const App = () => {
             handleChange={handleChange} />
 
           <QuestionSelect
-            legend="2.Vilken power-up skulle du välja?"
+            legend="2. Vilken power-up skulle du välja?"
             name="powerUp"
             options={["Super Mushroom - Klassiskt och pålitligt", "Fire Flower - Offensiv kraft", "Super Star - Ostoppbar en kort stund", "Cape Feather - Flyg över utmaningar", "Tanooki Suit - Mångsidig och rolig"]}
             value={formData.powerUp}
@@ -85,10 +93,28 @@ export const App = () => {
             value={formData.environment}
             handleChange={handleChange}
           />
-
+          <QuestionRadio
+            legend="5. Vad är viktigast för dig i en bana?"
+            name="priority"
+            options={priorityOptions}
+            value={formData.priority}
+            handleChange={handleChange}
+          />
           <button type="submit">Submit</button>
         </form>
       )}
-    </div>
-  );
-};
+
+
+      {isSubmitted && (
+        <div>
+          <h2>Dina svar</h2>
+          <p>Favoritäventyr: {formData.adventure}</p>
+          <p>Power-up: {formData.powerUp}</p>
+          <p>Boss-strategi: {formData.bossStrategy}</p>
+          <p>Miljö: {formData.environment}</p>
+          <p>Viktigast i bana: {formData.priority}</p>
+        </div>
+      )}
+    </section>
+  )
+}
