@@ -1,6 +1,6 @@
 export const Summary = ({ formData }) => {
     return (
-        <section>
+        <section className="summary">
             <h2>Dina svar</h2>
             <p>Favoritäventyr: {formData.adventure}</p>
             <p>Power-up: {formData.powerUp}</p>
