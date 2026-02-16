@@ -17,6 +17,14 @@ const bossStrategyOptions = [
   "Letar efter en genväg eller alternativ strategi",
 ];
 
+const environmentsOptions = [
+  "Grassland - Gröna kullar och blå himmel",
+  "Underground - Mörka grottor och coins",
+  "Underwater - Lugna undervattensbanor",
+  "Castle - Spännande slottsäventyr",
+  "Sky/Cloud - Högt uppe i molnen",
+  "Desert - Varma sandöknar",
+];
 export const App = () => {
   const [formData, setFormData] = useState({
     adventure: "",
@@ -54,7 +62,13 @@ export const App = () => {
             value={formData.adventure}
             handleChange={handleChange} />
 
-          <QuestionSelect formData={formData} handleChange={handleChange} />
+          <QuestionSelect
+            legend="2.Vilken power-up skulle du välja?"
+            name="powerUp"
+            options={["Super Mushroom - Klassiskt och pålitligt", "Fire Flower - Offensiv kraft", "Super Star - Ostoppbar en kort stund", "Cape Feather - Flyg över utmaningar", "Tanooki Suit - Mångsidig och rolig"]}
+            value={formData.powerUp}
+            handleChange={handleChange}
+          />
 
           <QuestionRadio
             legend="3. Hur hanterar du en svår boss fight?"
@@ -63,6 +77,15 @@ export const App = () => {
             value={formData.bossStrategy}
             handleChange={handleChange}
           />
+
+          <QuestionSelect
+            legend="4. Vilken miljö gillar du mest?"
+            name="environment"
+            options={environmentsOptions}
+            value={formData.environment}
+            handleChange={handleChange}
+          />
+
           <button type="submit">Submit</button>
         </form>
       )}
