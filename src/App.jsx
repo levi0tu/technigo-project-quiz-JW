@@ -1,7 +1,7 @@
 ﻿import { useState } from "react";
 import { QuestionRadio } from "./QuestionRadio";
 import { QuestionSelect } from "./QuestionSelect";
-//import { Summary } from "/Summary";
+import { Summary } from "./Summary";
 
 const adventureOptions = [
   "Rädda Princess Peach från Bowsers slott",
@@ -58,63 +58,54 @@ export const App = () => {
   };
 
   return (
-    <section>
-      <h1>Which Mario Character Are You</h1>
+    <main>
+      <section>
+        <h1>Which Mario Character Are You</h1>
 
-      {!isSubmitted && (
-        <form onSubmit={handleSubmit}>
-          <QuestionRadio
-            legend="1. Vilket är ditt favoritäventyr?"
-            name="adventure"
-            options={adventureOptions}
-            value={formData.adventure}
-            handleChange={handleChange} />
+        {!isSubmitted && (
+          <form onSubmit={handleSubmit}>
+            <QuestionRadio
+              legend="1. Vilket är ditt favoritäventyr?"
+              name="adventure"
+              options={adventureOptions}
+              value={formData.adventure}
+              handleChange={handleChange} />
 
-          <QuestionSelect
-            legend="2. Vilken power-up skulle du välja?"
-            name="powerUp"
-            options={["Super Mushroom - Klassiskt och pålitligt", "Fire Flower - Offensiv kraft", "Super Star - Ostoppbar en kort stund", "Cape Feather - Flyg över utmaningar", "Tanooki Suit - Mångsidig och rolig"]}
-            value={formData.powerUp}
-            handleChange={handleChange}
-          />
+            <QuestionSelect
+              legend="2. Vilken power-up skulle du välja?"
+              name="powerUp"
+              options={["Super Mushroom - Klassiskt och pålitligt", "Fire Flower - Offensiv kraft", "Super Star - Ostoppbar en kort stund", "Cape Feather - Flyg över utmaningar", "Tanooki Suit - Mångsidig och rolig"]}
+              value={formData.powerUp}
+              handleChange={handleChange}
+            />
 
-          <QuestionRadio
-            legend="3. Hur hanterar du en svår boss fight?"
-            name="bossStrategy"
-            options={bossStrategyOptions}
-            value={formData.bossStrategy}
-            handleChange={handleChange}
-          />
+            <QuestionRadio
+              legend="3. Hur hanterar du en svår boss fight?"
+              name="bossStrategy"
+              options={bossStrategyOptions}
+              value={formData.bossStrategy}
+              handleChange={handleChange}
+            />
 
-          <QuestionSelect
-            legend="4. Vilken miljö gillar du mest?"
-            name="environment"
-            options={environmentsOptions}
-            value={formData.environment}
-            handleChange={handleChange}
-          />
-          <QuestionRadio
-            legend="5. Vad är viktigast för dig i en bana?"
-            name="priority"
-            options={priorityOptions}
-            value={formData.priority}
-            handleChange={handleChange}
-          />
-          <button type="submit">Submit</button>
-        </form>
-      )}
-
-
-      {isSubmitted && (
-        <div>
-          <h2>Dina svar</h2>
-          <p>Favoritäventyr: {formData.adventure}</p>
-          <p>Power-up: {formData.powerUp}</p>
-          <p>Boss-strategi: {formData.bossStrategy}</p>
-          <p>Miljö: {formData.environment}</p>
-          <p>Viktigast i bana: {formData.priority}</p>
-        </div>
-      )}
-    </section>
+            <QuestionSelect
+              legend="4. Vilken miljö gillar du mest?"
+              name="environment"
+              options={environmentsOptions}
+              value={formData.environment}
+              handleChange={handleChange}
+            />
+            <QuestionRadio
+              legend="5. Vad är viktigast för dig i en bana?"
+              name="priority"
+              options={priorityOptions}
+              value={formData.priority}
+              handleChange={handleChange}
+            />
+            <button type="submit">Submit</button>
+          </form>
+        )}
+      </section>
+      {isSubmitted && <Summary formData={formData} />}
+    </main>
   )
 }
